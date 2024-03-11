@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtt62w2oonq1r"]
+
+[ext_resource type="Texture2D" uid="uid://dt5d2o0einl3l" path="res://_assets/Items/Coin/Coin-Sheet.png" id="1_7bt2d"]
+
+[sub_resource type="GDScript" id="GDScript_6spvm"]
+script/source = "extends CharacterBody2D
+
+const JUMP_VELOCITY = -200.0  # Adjusted for better bounce height
+var coinRolling = true
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+func _ready():
+	$bounce_timer.start()
+
+
+func _physics_process(delta):
+	#print(coinRolling, $bounce_timer.time_left)
+	if coinRolling:
+		velocity.y = JUMP_VELOCITY
+	if not is_on_floor() and not coinRolling:
+		velocity.y += gravity * delta
+		$Area2D/CollisionShape2D.disabled = false
+		
+
+	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	if \"player\" in body.get_groups():
+		body.on_player_getCoin.emit()
+		queue_free()
+	pass
+
+
+func _on_bounce_timer_timeout():
+	coinRolling = false
+	# Optional: Play a sound effect or animation to indicate the end of the bounce
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cv12"]
+radius = 14.1421
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_173jy"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjlmx"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7wbj"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsf60"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fu2o"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpytw"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdvsk"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sicga"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_embmc"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etsal"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8mvp"]
+atlas = ExtResource("1_7bt2d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cw1kd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_173jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjlmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7wbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsf60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fu2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpytw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdvsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sicga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_embmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etsal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8mvp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Coin2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_6spvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8cv12")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.523438, 0.523438)
+sprite_frames = SubResource("SpriteFrames_cw1kd")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"op_exp": true,
+"slice": "",
+"source": "res://_assets/Items/Coin/Coin.aseprite"
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8cv12")
+disabled = true
+
+[node name="bounce_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="bounce_timer" to="." method="_on_bounce_timer_timeout"]

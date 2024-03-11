@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c447fg3ulbkov"]
+
+[ext_resource type="PackedScene" uid="uid://crgn3117blgd3" path="res://Map/World_1.tscn" id="1_7lr0t"]
+[ext_resource type="Script" path="res://Scene/Game.gd" id="1_gvprj"]
+[ext_resource type="PackedScene" uid="uid://ctvwhuaw7cf12" path="res://Character/Player/player_body_2d.tscn" id="2_tqtfs"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gvprj")
+
+[node name="Node2D" parent="." instance=ExtResource("1_7lr0t")]
+
+[node name="PlayerBody2D" parent="." instance=ExtResource("2_tqtfs")]
+position = Vector2(-534, -37)
+
+[connection signal="on_dead" from="." to="." method="_on_on_dead"]

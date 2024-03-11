@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://5ynpjevj2vb4"
+path="res://.godot/imported/Walk-Base.aseprite-ab2fc883c2f3f13c679f9ae07fb76736.res"
+
+[deps]
+
+source_file="res://_assets/Mob/Boar/Walk/Walk-Base.aseprite"
+dest_files=["res://.godot/imported/Walk-Base.aseprite-ab2fc883c2f3f13c679f9ae07fb76736.res"]
+
+[params]
+

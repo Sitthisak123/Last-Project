@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://tv6oldm50msf"]
+
+[ext_resource type="Script" path="res://Scene/Main_menu_2d.gd" id="1_kgapi"]
+[ext_resource type="PackedScene" uid="uid://crgn3117blgd3" path="res://Map/World_1.tscn" id="2_jgl65"]
+[ext_resource type="PackedScene" uid="uid://codryripgmfo7" path="res://Scene/Main_menu_2d.tscn" id="3_raimf"]
+
+[node name="Title_Screen2D" type="CanvasLayer"]
+script = ExtResource("1_kgapi")
+
+[node name="Node2D" parent="." instance=ExtResource("2_jgl65")]
+position = Vector2(84, 314)
+
+[node name="MainMenu" parent="." instance=ExtResource("3_raimf")]

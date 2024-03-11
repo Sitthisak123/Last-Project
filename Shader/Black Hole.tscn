@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1w0sgg1svhyd"]
+
+[ext_resource type="Shader" path="res://Shader/Black Hole.gdshader" id="2_vkbot"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvvx7"]
+render_priority = 0
+shader = ExtResource("2_vkbot")
+
+[node name="BlackHole" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mvvx7")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://6xermrexhcen"]
+
+[ext_resource type="Script" path="res://Path/Path_Follow/Moving_platfrom_2d.gd" id="1_jtgiq"]
+[ext_resource type="Texture2D" uid="uid://btq8g0156018c" path="res://_assets/Tiles/Tiles.png" id="2_mc8jm"]
+
+[sub_resource type="Curve2D" id="Curve2D_eg66n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -136, 0, 0, 0, 0, 0, -141, 0, 0, 0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm72p"]
+size = Vector2(64, 15)
+
+[node name="MovingPlatfrom2d" type="Path2D"]
+curve = SubResource("Curve2D_eg66n")
+script = ExtResource("1_jtgiq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -1.5708
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../..")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="PathFollow2D"]
+light_mask = 99
+visibility_layer = 99
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_sm72p")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D2"]
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_mc8jm")
+region_enabled = true
+region_rect = Rect2(8, 8, 64, 24)

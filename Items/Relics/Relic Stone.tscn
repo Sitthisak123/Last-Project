@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://clhskl7x0dkyy"]
+
+[ext_resource type="Script" path="res://Items/Relics/Relic Stone.gd" id="1_bv8ve"]
+[ext_resource type="Texture2D" uid="uid://cc0vxm2cjuy7o" path="res://_assets/Items/Relics stone/Relics.png" id="1_eb1b8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfstk"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti0rk"]
+atlas = ExtResource("1_eb1b8")
+region = Rect2(600, 27, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7dlp"]
+atlas = ExtResource("1_eb1b8")
+region = Rect2(205, 171, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03p5l"]
+atlas = ExtResource("1_eb1b8")
+region = Rect2(600, 315, 63, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xqglu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0rk")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7dlp")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03p5l")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fo6hu"]
+radius = 12.3077
+
+[node name="RelicStone" type="CharacterBody2D" groups=["RelicStone"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_bv8ve")
+metadata/RelicKey = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pfstk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.53125, 1.45288)
+scale = Vector2(0.205357, 0.20145)
+sprite_frames = SubResource("SpriteFrames_xqglu")
+animation = &"3"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.65, 0.65)
+shape = SubResource("CircleShape2D_fo6hu")
+
+[node name="bounce_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="bounce_timer" to="." method="_on_bounce_timer_timeout"]

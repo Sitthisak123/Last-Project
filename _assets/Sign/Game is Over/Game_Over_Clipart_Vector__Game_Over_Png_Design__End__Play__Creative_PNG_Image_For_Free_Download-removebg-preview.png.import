@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c73p5nt2xh8gn"
+path="res://.godot/imported/Game_Over_Clipart_Vector__Game_Over_Png_Design__End__Play__Creative_PNG_Image_For_Free_Download-removebg-preview.png-5e24bf01377d17c2a769b06bdb05de7c.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://_assets/Sign/Game is Over/Game_Over_Clipart_Vector__Game_Over_Png_Design__End__Play__Creative_PNG_Image_For_Free_Download-removebg-preview.png"
+dest_files=["res://.godot/imported/Game_Over_Clipart_Vector__Game_Over_Png_Design__End__Play__Creative_PNG_Image_For_Free_Download-removebg-preview.png-5e24bf01377d17c2a769b06bdb05de7c.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmc0rdycoqk7u"]
+
+[ext_resource type="Script" path="res://Scene/Ending.gd" id="1_qt3ff"]
+
+[node name="Ending" type="CanvasLayer"]
+script = ExtResource("1_qt3ff")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -180.0
+offset_right = 40.5
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+text = "Ended"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -93.0
+offset_right = 144.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/normal_font_size = 17
+text = "Sitthisak  Theparsa  66122420321"
+fit_content = true
+text_direction = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.5
+offset_top = -76.0
+offset_right = 23.5
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

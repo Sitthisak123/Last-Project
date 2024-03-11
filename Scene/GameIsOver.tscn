@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3yrjrhsqa6c6"]
+
+[ext_resource type="Script" path="res://Scene/GameIsOver.gd" id="1_lf3ny"]
+[ext_resource type="Texture2D" uid="uid://c73p5nt2xh8gn" path="res://_assets/Sign/Game is Over/Game_Over_Clipart_Vector__Game_Over_Png_Design__End__Play__Creative_PNG_Image_For_Free_Download-removebg-preview.png" id="2_xc5y2"]
+
+[node name="GameIsOver" type="CanvasLayer"]
+script = ExtResource("1_lf3ny")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(352, 184)
+texture = ExtResource("2_xc5y2")
+region_enabled = true
+region_rect = Rect2(32, 104, 440, 288)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.454861
+anchor_top = 0.258
+anchor_right = 0.71
+anchor_bottom = 0.56875
+offset_left = -79.5
+offset_top = 204.16
+offset_right = -79.5
+offset_bottom = 204.16
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="btn_Restart" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="btn_Title" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/btn_Restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/btn_Title" to="." method="_on_btn_title_pressed"]

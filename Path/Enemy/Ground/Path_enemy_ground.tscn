@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://68w8137vwaor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7aky"]
+size = Vector2(123, 20)
+
+[node name="PathEnemyGround" type="Area2D"]
+position = Vector2(192, 12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-192, -11.5)
+shape = SubResource("RectangleShape2D_x7aky")
+metadata/enemy_Type = "Ground"
+metadata/enemy_List = []

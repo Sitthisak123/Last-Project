@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d1viu8gudicsr"]
+
+[node name="TipTextAssignItem" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -126.0
+offset_top = -33.0
+offset_right = 124.0
+offset_bottom = -11.0
+text = "Press [R] to add Relics to  Stone"
